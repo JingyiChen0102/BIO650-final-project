@@ -1,0 +1,11 @@
+library(NHANES)
+library(tidyverse)
+library(ggplot2)
+library(car)
+library(lmtest)
+library(ggfortify)
+data("NHANES")
+# Select Covariates and Summarize #
+sample <- NHANES %>%
+  dplyr::select(BPSysAve, Age, BMI, Gender, AlcoholDay, Diabetes, AlcoholYear, Alcohol12PlusYr) %>%
+  filter(!is.na(BPSysAve), !is.na(AlcoholDay), !is.na(Alcohol12PlusYr), !is.na(AlcoholYear))
